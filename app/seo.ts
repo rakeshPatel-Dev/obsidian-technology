@@ -78,6 +78,12 @@ export const seoMetadata: Metadata = {
     apple: "/apple-touch-icon.png",
   },
 
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "Obsidian",
+  },
+
   verification: {
     google: "GOOGLE_VERIFICATION_CODE", // later
   },
