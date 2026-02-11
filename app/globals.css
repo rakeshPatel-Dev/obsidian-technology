@@ -7,12 +7,26 @@
 :root {
   --font-goldman: 'Goldman', sans-serif;
   --font-lato: 'Lato', sans-serif;
+  --gradient-color: #8350e8;
+  --sparkles-color: #8350e8;
 }
 
 body {
   font-family: var(--font-lato);
 }
 
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 35s linear infinite;
+}
 
 @theme inline {
   --color-background: var(--background);
@@ -60,6 +74,8 @@ body {
   --radius-2xl: calc(var(--radius) + 8px);
   --radius-3xl: calc(var(--radius) + 12px);
   --radius-4xl: calc(var(--radius) + 16px);
+  --color-sparkles-color: var(----sparkles-color);
+  --color-gradient-color: var(----gradient-color);
 }
 
 :root {
@@ -129,6 +145,8 @@ body {
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+  --gradient-color: #8350e8;
+  --sparkles-color: #ffffff;
 }
 
 @layer base {

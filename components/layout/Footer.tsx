@@ -1,6 +1,6 @@
 import { Footer } from '@/components/footer-section';
 
-export default function DemoOne() {
+export default function BrandFooter() {
   return (
     <div className="relative flex min-h-svh flex-col">
       <div className="min-h-screen flex items-center justify-center">

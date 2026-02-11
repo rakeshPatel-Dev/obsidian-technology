@@ -4,6 +4,8 @@ import { ThemeProvider } from "next-themes"
 
 import { seoMetadata } from "./seo"
 import { goldman, lato } from "./fonts"
+import BrandHeader from "@/components/layout/Header"
+import BrandFooter from "@/components/layout/Footer"
 
 export const metadata: Metadata = seoMetadata
 
@@ -20,7 +22,9 @@ export default function RootLayout({
     >
       <body className="antialiased pt-20 font-body">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <BrandHeader />
           {children}
+          <BrandFooter />
         </ThemeProvider>
       </body>
     </html>
