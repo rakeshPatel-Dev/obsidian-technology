@@ -5,7 +5,7 @@ import { logos } from "@/data/brands"
 
 export function LogoLoop() {
   return (
-    <div className="h-screen w-full overflow-hidden">
+    <div className=" w-full overflow-hidden">
       <div className="mx-auto w-full max-w-4xl">
         {/* <div className="text-center text-3xl text-foreground">
           <span className="text-indigo-900 dark:text-indigo-200">
