@@ -6,7 +6,7 @@ import { logos } from "@/data/brands"
 export function LogoLoop() {
   return (
     <div className=" w-full overflow-hidden">
-      <div className="mx-auto w-full max-w-4xl">
+      <div className="mx-auto w-full md:max-w-4xl">
         {/* <div className="text-center text-3xl text-foreground">
           <span className="text-indigo-900 dark:text-indigo-200">
             Trusted by experts.
@@ -19,7 +19,7 @@ export function LogoLoop() {
           <InfiniteSlider
             className='flex h-full w-full items-center'
             duration={30}
-            gap={48}
+            gap={20}
           >
             {logos.map(({ id, component: Logo, className }) => (
               <div
@@ -34,12 +34,12 @@ export function LogoLoop() {
             ))}
           </InfiniteSlider>
           <ProgressiveBlur
-            className='pointer-events-none absolute top-0 left-0 h-full w-50'
+            className='pointer-events-none absolute top-0 left-0 h-full w-10 md:w-50'
             direction='left'
             blurIntensity={1}
           />
           <ProgressiveBlur
-            className='pointer-events-none absolute top-0 right-0 h-full w-50'
+            className='pointer-events-none absolute top-0 right-0 h-full w-10 md:w-50'
             direction='right'
             blurIntensity={1}
           />

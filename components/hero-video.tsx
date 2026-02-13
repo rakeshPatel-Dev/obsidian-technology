@@ -99,9 +99,9 @@ const ContainerScroll = ({
 
   const { scrollYProgress } = useScroll({
     target: scrollRef,
-    offset: isMobile
-      ? ["start 95%", "end 20%"]
-      : ["start start", "end start"],
+    // offset: isMobile
+    //   ? ["start 95%", "end 20%"]
+    //   : ["start start", "end start"],
   })
 
 
@@ -151,7 +151,7 @@ interface ContainerInsetProps extends HTMLMotionProps<"div"> {
 const ContainerInset = React.forwardRef<HTMLDivElement, ContainerInsetProps>(
   (
     {
-      translateYRange = ["-1%", "80%"],
+      translateYRange = ["-1%", "20%"],
       insetYRange = [35, 0],
       insetXRange = [42, 0],
       roundednessRange = [1000, 16],
@@ -161,14 +161,14 @@ const ContainerInset = React.forwardRef<HTMLDivElement, ContainerInsetProps>(
     },
     ref
   ) => {
-    const shouldReduceMotion = useReducedMotion()
+    // const shouldReduceMotion = useReducedMotion()
 
 
+    // const { scrollYProgress } = useContainerScrollContext()
     const { scrollYProgress } = useContainerScrollContext()
-    const transformY = useTransform(scrollYProgress, [0, 1], translateYRange)
-    const y = shouldReduceMotion ? 0 : transformY
 
-    const SPEED = 0.50 // lower = faster open
+    const SPEED = 1 // lower = faster open
+    const y = useTransform(scrollYProgress, [0, SPEED], translateYRange)
 
     const insetY = useTransform(scrollYProgress, [0, SPEED], insetYRange)
     const insetX = useTransform(scrollYProgress, [0, SPEED], insetXRange)

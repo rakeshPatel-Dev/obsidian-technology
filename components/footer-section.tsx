@@ -2,7 +2,7 @@
 import React from 'react';
 import type { ComponentProps, ReactNode } from 'react';
 import { motion, useReducedMotion } from 'motion/react';
-import { footerLinks } from '@/data/footer';
+import { footerLinks, footerSocials } from '@/data/footer';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -12,7 +12,7 @@ import Image from 'next/image';
 
 export function Footer() {
 	return (
-		<footer className="md:rounded-t-6xl relative w-full mx-auto flex flex-col items-center justify-center rounded-t-4xl border-t bg-[radial-gradient(35%_128px_at_50%_0%,theme(backgroundColor.white/8%),transparent)] px-20 py-12 lg:py-16">
+		<footer className="md:rounded-t-6xl relative w-full mx-auto flex flex-col items-center justify-center rounded-t-4xl border-t bg-[radial-gradient(35%_128px_at_50%_0%,theme(backgroundColor.white/8%),transparent)] px-6 md:px-20 py-12 lg:py-16">
 			<div className="bg-foreground/20 absolute top-0 right-1/2 left-1/2 h-px w-1/3 -translate-x-1/2 -translate-y-1/2 rounded-full blur" />
 
 			<div className="grid w-full gap-8 xl:grid-cols-3 xl:gap-8">
@@ -33,6 +33,15 @@ export function Footer() {
 					<p className="text-muted-foreground mt-8 text-sm md:mt-0">
 						© {new Date().getFullYear()} Obsidian Technology. All rights reserved.
 					</p>
+					<div className='flex items-center gap-4 text-muted-foreground '>
+						{footerSocials.map((social, idx) => (
+							<a href={social.href} key={idx} title='social-link'
+								className=' hover:text-accent-foreground transition-all '
+							>
+								< social.icon className=' size-6' />
+							</a>
+						))}
+					</div>
 				</AnimatedContainer>
 
 				<div className="mt-10 grid grid-cols-2 gap-8 md:grid-cols-4 xl:col-span-2 xl:mt-0">

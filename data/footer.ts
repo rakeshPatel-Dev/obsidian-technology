@@ -52,13 +52,11 @@ export const footerLinks: FooterSection[] = [
 			{ title: 'Cookies Policy', href: '/cookies' },
 		],
 	},
-	{
-		label: 'Social',
-		links: [
+];
+
+export const footerSocials =  [
 			{ title: 'LinkedIn', href: '#', icon: LinkedinIcon },
 			{ title: 'Instagram', href: '#', icon: InstagramIcon },
 			{ title: 'Facebook', href: '#', icon: FacebookIcon },
 			{ title: 'YouTube', href: '#', icon: YoutubeIcon },
-		],
-	},
-];
+		]

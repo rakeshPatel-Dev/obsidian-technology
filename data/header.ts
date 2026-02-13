@@ -31,43 +31,36 @@ export type LinkItem = {
 ================================ */
 
 export const productLinks: LinkItem[] = [
-	{
-		title: "Web Development",
-		href: "/services/web-development",
-		description: "High-performance, scalable websites built with modern tech",
-		icon: GlobeIcon,
-	},
-	{
-		title: "Frontend Engineering",
-		href: "/services/frontend",
-		description: "Pixel-perfect UI with React, Next.js & modern frameworks",
-		icon: CodeIcon,
-	},
-	{
-		title: "UI / UX Design",
-		href: "/services/ui-ux",
-		description: "Clean, conversion-focused interfaces users love",
-		icon: Paintbrush,
-	},
-	{
-		title: "Mobile-First Solutions",
-		href: "/services/mobile",
-		description: "Fast, responsive experiences across all devices",
-		icon: Smartphone,
-	},
-	{
-		title: "Performance & SEO",
-		href: "/services/performance-seo",
-		description: "Optimized speed, accessibility, and search visibility",
-		icon: BarChart,
-	},
-	{
-		title: "Integrations & APIs",
-		href: "/services/integrations",
-		description: "Payments, CMS, third-party tools & custom APIs",
-		icon: PlugIcon,
-	},
+  {
+    title: "Digital Platforms",
+    href: "/services/web-development",
+    description:
+      "We architect scalable, high-performance platforms engineered for growth — not just launch. Built to handle scale, speed, and long-term evolution.",
+    icon: GlobeIcon,
+  },
+  {
+    title: "Interface Systems",
+    href: "/services/frontend",
+    description:
+      "From UX strategy to pixel-perfect execution, we design and engineer intuitive interfaces that feel seamless, deliberate, and conversion-driven.",
+    icon: Paintbrush,
+  },
+  {
+    title: "Growth Optimization",
+    href: "/services/performance-seo",
+    description:
+      "Speed, accessibility, and search visibility aligned into a performance engine that increases engagement, retention, and measurable revenue impact.",
+    icon: BarChart,
+  },
+  {
+    title: "System Integrations",
+    href: "/services/integrations",
+    description:
+      "We connect payments, CMS, APIs, and third-party tools into a unified, automated ecosystem that eliminates friction and operational inefficiencies.",
+    icon: PlugIcon,
+  },
 ]
+
 
 /* ================================
    COMPANY

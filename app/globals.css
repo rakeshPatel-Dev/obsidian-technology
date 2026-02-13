@@ -9,6 +9,23 @@
   --font-lato: 'Lato', sans-serif;
   --gradient-color: #8350e8;
   --sparkles-color: #8350e8;
+  --background: oklch(0.98 0.002 90);
+  --foreground: oklch(0.12 0 0);
+  --card-foreground: oklch(0.12 0 0);
+  --popover-foreground: oklch(0.12 0 0);
+  --primary: oklch(0.12 0 0);
+  --primary-foreground: oklch(0.98 0 0);
+  --secondary: oklch(0.96 0.002 90);
+  --secondary-foreground: oklch(0.12 0 0);
+  --muted: oklch(0.94 0.002 90);
+  --muted-foreground: oklch(0.45 0 0);
+  --accent: oklch(0.65 0.15 25);
+  --accent-foreground: oklch(0.98 0 0);
+  --destructive-foreground: oklch(0.577 0.245 27.325);
+  --border: oklch(0.9 0.002 90);
+  --input: oklch(0.9 0.002 90);
+  --ring: oklch(0.12 0 0);
+  --radius: 0rem;
 }
 
 body {
@@ -76,6 +93,8 @@ body {
   --radius-4xl: calc(var(--radius) + 16px);
   --color-sparkles-color: var(----sparkles-color);
   --color-gradient-color: var(----gradient-color);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --radius: var(----radius);
 }
 
 :root {
