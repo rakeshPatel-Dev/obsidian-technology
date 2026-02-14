@@ -2,8 +2,9 @@
 import React from 'react';
 import { ServiceCard } from '@/components/card-26';
 import { services } from '@/data/services';
+import SuperTitle from '@/components/layout/SuperTitle';
 // Example usage with SaaS-style service cards
-const ServiceCardExample = () => {
+const Services = () => {
 
 
 
@@ -18,11 +19,7 @@ const ServiceCardExample = () => {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-16 max-w-2xl">
-          <div className="mb-4">
-            <span className="inline-block text-[11px] font-medium uppercase tracking-[0.15em] text-neutral-500 dark:text-neutral-400">
-              Our Services
-            </span>
-          </div>
+          <SuperTitle title="Services" />
           <h1 className="text-5xl font-heading md:text-6xl font-light tracking-tight text-neutral-900 dark:text-neutral-100 mb-6">
             Engineered for Ambitious Brands
           </h1>
@@ -66,4 +63,4 @@ const ServiceCardExample = () => {
   );
 };
 
-export default ServiceCardExample;
+export default Services;

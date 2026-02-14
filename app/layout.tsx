@@ -20,7 +20,7 @@ export default function RootLayout({
       className={`${goldman.variable} ${lato.variable}`}
       suppressHydrationWarning
     >
-      <body className="antialiased pt-20 font-body">
+      <body className="antialiased pt-18 font-body">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <BrandHeader />
           {children}

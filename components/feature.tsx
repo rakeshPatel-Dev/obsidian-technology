@@ -2,6 +2,7 @@
 import React from 'react';
 import { motion, useInView } from 'framer-motion';
 import { cn } from '@/lib/utils';
+import SuperTitle from './layout/SuperTitle';
 
 // Feature item interface
 interface Feature {
@@ -51,16 +52,14 @@ const FeatureCard = ({ feature, index }: { feature: Feature; index: number }) =>
       )}>
         {/* Gradient overlay on hover */}
         <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-700 group-hover:opacity-100">
-          <div className="absolute inset-0 bg-gradient-to-br from-neutral-50/80 via-transparent to-transparent dark:from-neutral-900/50" />
+          <div className="absolute inset-0 bg-linear-to-br from-neutral-50/80 via-transparent to-transparent dark:from-neutral-900/50" />
         </div>
 
         {/* Content */}
         <div className="relative p-8 lg:p-10">
           {/* Label */}
           <div className="mb-8 flex items-center justify-between">
-            <span className="text-[10px] font-medium uppercase tracking-[0.2em] text-neutral-400 dark:text-neutral-600">
-              {feature.label}
-            </span>
+            <SuperTitle title={feature.label} />
             {feature.metrics && (
               <div className="text-right">
                 <div className="text-lg font-light text-neutral-900 dark:text-neutral-100">
@@ -95,7 +94,7 @@ const FeatureCard = ({ feature, index }: { feature: Feature; index: number }) =>
           </p>
 
           {/* Hover indicator line */}
-          <div className="mt-8 h-px w-0 bg-gradient-to-r from-neutral-900 to-transparent transition-all duration-500 group-hover:w-16 dark:from-neutral-100" />
+          <div className="mt-8 h-px w-0 bg-linear-to-r from-neutral-900 to-transparent transition-all duration-500 group-hover:w-16 dark:from-neutral-100" />
         </div>
       </div>
     </motion.div>
@@ -141,11 +140,7 @@ export const FeaturesSection = ({
           className="mx-auto mb-16 max-w-2xl text-center lg:mb-20"
         >
           {eyebrow && (
-            <div className="mb-4">
-              <span className="inline-block text-[11px] font-medium uppercase tracking-[0.15em] text-neutral-500 dark:text-neutral-400">
-                {eyebrow}
-              </span>
-            </div>
+            <SuperTitle title={eyebrow} />
           )}
 
           <h2 className="mb-6 font-heading font-light text-4xl tracking-tight text-neutral-900 dark:text-neutral-100 lg:text-5xl">
@@ -293,7 +288,7 @@ export const FeaturesSectionBento = ({
 
                   {/* Gradient overlay */}
                   <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-700 group-hover:opacity-100">
-                    <div className="absolute inset-0 bg-gradient-to-br from-neutral-100/60 via-transparent to-transparent dark:from-neutral-800/40" />
+                    <div className="absolute inset-0 bg-linear-to-br from-neutral-100/60 via-transparent to-transparent dark:from-neutral-800/40" />
                   </div>
                 </div>
               </motion.div>

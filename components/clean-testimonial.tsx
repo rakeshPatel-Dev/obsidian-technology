@@ -214,7 +214,7 @@ export function Testimonial() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0, transition: { duration: 0.2 } }}
-            className="text-xl md:text-4xl font-heading font-light leading-relaxed tracking-tight text-foreground"
+            className="text-xl md:text-3xl font-heading font-light leading-relaxed tracking-tight text-foreground"
           >
             <SplitText text={currentTestimonial.quote} />
           </motion.blockquote>

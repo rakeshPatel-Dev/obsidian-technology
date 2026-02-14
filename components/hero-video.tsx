@@ -72,6 +72,7 @@ interface ContainerAnimatedProps extends HTMLMotionProps<"div"> {
 }
 interface ContainerScrollValue {
   scrollYProgress: MotionValue<number>
+  isMobile: boolean
 }
 const ContainerScrollContext = React.createContext<
   ContainerScrollValue | undefined
@@ -94,23 +95,31 @@ const ContainerScroll = ({
 }: ContainerScrollProps) => {
   const scrollRef = React.useRef<HTMLDivElement>(null)
 
-  const isMobile = typeof window !== "undefined" && window.innerWidth < 768
+  const [isMobile, setIsMobile] = React.useState(false)
 
+  React.useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
 
   const { scrollYProgress } = useScroll({
     target: scrollRef,
-    // offset: isMobile
-    //   ? ["start 95%", "end 20%"]
-    //   : ["start start", "end start"],
+    offset: isMobile
+      ? ["start end", "end start"] // Mobile: start animation earlier
+      : ["start start", "end start"], // Desktop: original behavior
   })
 
-
-
   return (
-    <ContainerScrollContext.Provider value={{ scrollYProgress }}>
+    <ContainerScrollContext.Provider value={{ scrollYProgress, isMobile }}>
       <section
         className={cn(
-          "relative w-full min-h-screen md:min-h-[120vh]  py-24 flex flex-col items-center justify-start",
+          "relative w-full sm:min-h-screen md:min-h-[140vh] py-24 flex flex-col items-center justify-start",
           className
         )}
         {...props}
@@ -122,6 +131,7 @@ const ContainerScroll = ({
   )
 }
 ContainerScroll.displayName = "ContainerScroll"
+
 const ContainerAnimated = React.forwardRef<
   HTMLDivElement,
   ContainerAnimatedProps
@@ -161,19 +171,27 @@ const ContainerInset = React.forwardRef<HTMLDivElement, ContainerInsetProps>(
     },
     ref
   ) => {
-    // const shouldReduceMotion = useReducedMotion()
+    const { scrollYProgress, isMobile } = useContainerScrollContext()
 
+    // Smoother, slower opening animation
+    const SPEED = isMobile ? 0.8 : 0.5 // Slightly faster on mobile for better UX
 
-    // const { scrollYProgress } = useContainerScrollContext()
-    const { scrollYProgress } = useContainerScrollContext()
+    // Mobile-specific ranges for better behavior
+    const mobileTranslateYRange: [string, string] = ["0%", "15%"]
+    const mobileInsetYRange: [number, number] = [20, 0]
+    const mobileInsetXRange: [number, number] = [8, 0]
+    const mobileRoundednessRange: [number, number] = [24, 12]
 
-    const SPEED = 1 // lower = faster open
-    const y = useTransform(scrollYProgress, [0, SPEED], translateYRange)
+    // Use mobile or desktop values
+    const finalTranslateYRange = isMobile ? mobileTranslateYRange : translateYRange
+    const finalInsetYRange = isMobile ? mobileInsetYRange : insetYRange
+    const finalInsetXRange = isMobile ? mobileInsetXRange : insetXRange
+    const finalRoundednessRange = isMobile ? mobileRoundednessRange : roundednessRange
 
-    const insetY = useTransform(scrollYProgress, [0, SPEED], insetYRange)
-    const insetX = useTransform(scrollYProgress, [0, SPEED], insetXRange)
-    const roundedness = useTransform(scrollYProgress, [0, SPEED], roundednessRange)
-
+    const y = useTransform(scrollYProgress, [0, SPEED], finalTranslateYRange)
+    const insetY = useTransform(scrollYProgress, [0, SPEED], finalInsetYRange)
+    const insetX = useTransform(scrollYProgress, [0, SPEED], finalInsetXRange)
+    const roundedness = useTransform(scrollYProgress, [0, SPEED], finalRoundednessRange)
 
     const clipPath = useMotionTemplate`inset(${insetY}% ${insetX}% ${insetY}% ${insetX}% round ${roundedness}px)`
 
@@ -181,9 +199,17 @@ const ContainerInset = React.forwardRef<HTMLDivElement, ContainerInsetProps>(
       () => ({ y, clipPath, ...props.style }),
       [y, clipPath, props.style]
     )
+
     return (
       <motion.div
-        transition={SPRING_CONFIG || props.transition}
+        transition={{
+          type: "spring",
+          stiffness: 80, // Lower for smoother motion
+          damping: 20,   // Higher for less bounce
+          mass: 0.8,
+          restDelta: 0.001,
+          ...props.transition,
+        }}
         ref={ref}
         className={cn(
           "origin-top overflow-hidden will-change-transform",

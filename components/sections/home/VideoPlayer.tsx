@@ -5,7 +5,7 @@ import {
   ContainerAnimated
 } from "@/components/hero-video"
 
-const DemoVariant1 = () => {
+const PromoVideo = () => {
   return (
     <ContainerScroll className="bg-stone-100 relative dark:bg-background text-stone-800 dark:text-foreground">
       <ContainerStagger viewport={{ once: false }}>
@@ -16,7 +16,7 @@ const DemoVariant1 = () => {
         </ContainerAnimated>
       </ContainerStagger>
 
-      <ContainerInset className="mt-16 w-full relative aspect-video mx-auto rounded-2xl shadow-2xl">
+      <ContainerInset className=" w-full relative aspect-video mx-auto rounded-2xl shadow-2xl">
         <video
           loop
           playsInline
@@ -36,4 +36,4 @@ const DemoVariant1 = () => {
 }
 
 
-export { DemoVariant1 }
+export { PromoVideo }
